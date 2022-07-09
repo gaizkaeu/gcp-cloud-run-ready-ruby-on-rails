@@ -31,9 +31,9 @@ As the account is created, it has no permissions, so we need to grant.
 ## 3. Create WIF Identity pool
 <img width="1439" alt="Captura de Pantalla 2022-07-09 a las 16 42 35" src="https://user-images.githubusercontent.com/24901613/178110621-a611ef21-6f4a-4481-a12b-04866e05c802.png">
 
-  Provider -> OIDC 
-  Provider name -> Github-Actions
-  Issuer url -> https://token.actions.githubusercontent.com
+1.Provider -> OIDC
+2.Provider name -> Github-Actions
+3.Issuer url -> https://token.actions.githubusercontent.com
   
   --
   
@@ -55,3 +55,7 @@ As the account is created, it has no permissions, so we need to grant.
 <img width="588" alt="Captura de Pantalla 2022-07-09 a las 16 50 59" src="https://user-images.githubusercontent.com/24901613/178110881-4d67fffd-511f-4974-9fa6-25c5a3fb4437.png">
 
   *Replace username/repository* with your data.
+  
+### Secrets
+
+As rails applications different secrets are used, DB_HOST, SECRET_KEY_BASE... 
