@@ -52,6 +52,9 @@ gem 'rack-brotli'
 # Simple, efficient background processing for Ruby (https://sidekiq.org)
 gem 'sidekiq'
 
+# Lock staging servers from search engines and prying eyes. (http://lockup.interdiscipline.com)
+gem 'lockup'
+
 group :development, :test do
   # Debugging functionality for Ruby (https://github.com/ruby/debug)
   gem 'debug', '>= 1.0.0', platforms: %i[mri mingw x64_mingw]
