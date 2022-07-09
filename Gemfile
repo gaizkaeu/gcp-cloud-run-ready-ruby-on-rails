@@ -78,7 +78,6 @@ group :development, :test do
 
   # Code style checking for RSpec files (https://github.com/rubocop/rubocop-rspec)
   gem 'rubocop-rspec', require: false
-
 end
 
 group :development do
