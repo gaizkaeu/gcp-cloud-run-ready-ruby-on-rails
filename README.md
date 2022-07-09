@@ -7,6 +7,8 @@ It uses WIF for Authentication as Google recomends, so no keys are needed.
 
 Feel free to fork and modify this repository to satisfy your needs.
 
+*Currently working in the documentation*
+
 ## 1. Authentication.
 
 First of all, we need to create a service account. 
