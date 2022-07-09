@@ -1,0 +1,124 @@
+inherit_from:
+  - node_modules/@prettier/plugin-ruby/rubocop.yml
+
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 3.1
+  Exclude:
+    - app/javascript/**/*
+    - bin/**/*
+    - coverage/**/*
+    - db/schema.rb
+    - db/migrate/**/*
+    - log/**/*
+    - node_modules/**/*
+    - public/**/*
+    - spec/javascript/**/*
+    - tmp/**/*
+    - vendor/**/*
+    - docker-volumes/**/*
+  EnabledByDefault: true
+
+### Rails
+
+Rails/FilePath:
+  EnforcedStyle: arguments
+
+Rails/ApplicationController:
+  Enabled: false
+
+Rails/SchemaComment:
+  Enabled: false
+
+Rails/DefaultScope:
+  Enabled: false
+
+### Bundler
+
+Bundler/OrderedGems:
+  Enabled: false
+
+Bundler/GemVersion:
+  Enabled: false
+
+### Style
+
+Style/BlockComments:
+  Exclude:
+    - 'spec/spec_helper.rb'
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/MethodCallWithArgsParentheses:
+  Enabled: false
+
+Style/MissingElse:
+  Enabled: false
+
+Style/Copyright:
+  Enabled: false
+
+Style/InlineComment:
+  Enabled: false
+
+Style/StringHashKeys:
+  Enabled: false
+
+Style/DocumentationMethod:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Style/IpAddresses:
+  Enabled: false
+
+Style/DisableCopsWithinSourceCodeDirective:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/MethodCalledOnDoEndBlock:
+  Enabled: false
+
+Style/StringLiterals:
+  EnforcedStyle: single_quotes
+
+Style/StringLiteralsInInterpolation:
+  EnforcedStyle: single_quotes
+
+Style/QuotedSymbols:
+  EnforcedStyle: single_quotes
+
+### Metrics
+
+Metrics/BlockLength:
+  IgnoredMethods: ['configure', 'content_security_policy']
+
+RSpec/ExampleLength:
+  Enabled: false
+
+# Lint
+
+Lint/ConstantResolution:
+  Enabled: false
+
+# RSpec
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/AlignLeftLetBrace:
+  Enabled: false
+
+RSpec/AlignRightLetBrace:
+  Enabled: false

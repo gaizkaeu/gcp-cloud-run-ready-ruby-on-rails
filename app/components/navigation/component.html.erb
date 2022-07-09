@@ -1,0 +1,9 @@
+<div class="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto">
+  <div class="py-4 lg:py-8 flex justify-center items-center">
+    <nav class="flex-1 flex items-center justify-start">
+      <% nav_links.each do |nav_link| %>
+        <%= link_to nav_link.name, nav_link.href, class: "mr-2 xl:mr-3 py-2 px-4 rounded-full text-lg #{helpers.cp(nav_link.href) ? "text-gray-800 font-semibold bg-gray-100" : "text-gray-500 dark:text-white dark:hover:text-black hover:bg-gray-100"}"%>
+      <% end %>
+    </nav>
+  </div>
+</div>

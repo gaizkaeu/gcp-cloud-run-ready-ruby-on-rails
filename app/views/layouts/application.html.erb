@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%= tag.meta charset: 'utf-8' %>
+    <%= tag.title 'Gaizka Urdangarin Template' %>
+    <%= tag.meta content: 'GaizkaU', name: 'description' %>
+    <%= tag.meta content: 'width=device-width,initial-scale=1', name: 'viewport' %>
+    <%= tag.meta content: 'yes', name: 'mobile-web-app-capable' %>
+    <%= tag.meta content: 'GaizkaU', name: 'application-name' %>
+    <%= tag.meta content: '#991c1c', name: 'theme-color' %>
+    <%= tag.meta content: '#ffc40d', name: 'msapplication-TileColor' %>
+    <%= tag.meta content: 'yes', name: 'apple-mobile-web-app-capable' %>
+    <%= tag.meta content: 'GaizkaU', name: 'apple-mobile-web-app-title' %>
+    <%= tag.meta content: 'black', name: 'apple-mobile-web-app-status-bar-style' %>
+    <%= tag.meta content: Rails.configuration.x.git.commit_version, name: 'git-commit-version' %>
+    <%= tag.meta content: Rails.configuration.x.git.commit_time, name: 'git-commit-time' %>
+    <%= tag.meta name: 'app-host', content: Rails.configuration.x.app_host %>
+    <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
+    <%= tag.link href: asset_path('/apple-touch-icon.png'), rel: 'apple-touch-icon', type: 'image/png', sizes: '180x180' %>
+    <%= tag.link href: asset_path('/favicon-32x32.png'),    rel: 'icon',             type: 'image/png', sizes: '32x32' %>
+    <%= tag.link href: asset_path('/favicon-16x16.png'),    rel: 'icon',             type: 'image/png', sizes: '16x16' %>
+    <%= tag.link href: asset_path('/safari-pinned-tab.svg'),rel: 'mask-icon',        color: '#d30001' %>
+    <%= tag.link href: webmanifest_path, rel: 'manifest' %>
+    <%= vite_client_tag %>
+    <%= vite_javascript_tag 'application', 'data-turbo-track': 'reload' %>
+    <%= vite_stylesheet_tag 'application', 'data-turbo-track': 'reload' %>
+  </head>
+  <body class="dark:bg-gray-800 bg-slate-50">
+    <div class="max-w-7xl px-4 sm:px-6 lg:px-8 mx-auto">
+      <%= render FlashAlert::Component.new %>
+      <%= render Navigation::Component.new do |nav| %>
+        <% nav.nav_links [
+          { name: 'Home', href: root_path }, \
+          { name: 'Help', href: '#' }
+        ]%>
+      <% end %>
+      <main class="dark:bg-gray-700 dark:text-white bg-white shadow-xl rounded-3xl p-5 sm:p-8 lg:p-10">
+        <%= yield %>
+      </main>
+      <%= render AppFooter::Component.new class: 'relative mt-2 mb-6 lg:px-0 lg:mr-16 lg:ml-96 lg:max-w-5xl' %>
+    </div>
+  </body>
+</html>

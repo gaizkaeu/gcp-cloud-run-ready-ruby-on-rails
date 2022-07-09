@@ -1,0 +1,87 @@
+name: Run-Tests
+
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-20.04
+
+    services:
+      postgres:
+        image: postgres:14-alpine
+        ports: ['5432:5432']
+        env:
+          POSTGRES_PASSWORD: postgres
+
+      redis:
+        image: redis:alpine
+        ports: ['6379:6379']
+
+    env:
+      DB_HOST: localhost
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      REDIS_URL: redis://localhost:6379/0
+      RAILS_ENV: test
+      DISABLE_SPRING: true
+      CI: true
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3.3.0
+        with:
+          cache: yarn
+
+      - name: Install Yarn packages
+        run: bin/yarn install --frozen-lockfile
+
+      - name: Lint with RuboCop
+        run: bin/rubocop --parallel
+
+      - name: Run ESLint
+        run: bin/yarn lint
+
+      - name: Setup PostgreSQL
+        run: bin/rails db:create
+
+      - name: Compile assets
+        run: bin/rails assets:precompile
+
+      - name: Run Ruby Tests
+        run: bin/rspec
+
+      - name: End-to-end tests
+        uses: cypress-io/github-action@v4
+        with:
+          start: bundle exec rails server
+          wait-on: http://localhost:3000
+          browser: chrome
+          record: true
+        env:
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CYPRESS_BASE_URL: http://localhost:3000
+          CYPRESS: true
+        if: env.CYPRESS_RECORD_KEY != null
+
+      - name: Check JS size limit
+        run: yarn size-limit
+
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: Cypress screenshots and videos
+          path: |
+            tmp/cypress_screenshots/
+            tmp/cypress_videos/
+          if-no-files-found: ignore
