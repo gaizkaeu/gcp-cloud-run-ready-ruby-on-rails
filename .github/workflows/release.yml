@@ -1,4 +1,4 @@
-name: CI-RELEASE
+name: Deployment
 
 on:
   release: # When release created and published
@@ -104,6 +104,7 @@ jobs:
       id-token: 'write'
       
     runs-on: ubuntu-latest
+    environment: deployment
 
     steps:
       - name: Checkout
@@ -149,6 +150,7 @@ jobs:
       id-token: 'write'
       
     runs-on: ubuntu-latest
+    environment: deployment
 
     steps:
       - name: Google Auth
