@@ -82,11 +82,15 @@ First of all we need to create that environment, in Settings -> Environments. On
 
 In other to make the rails app work, we need some secrets, as the DB_HOST or the SECRET_KEY_BASE. The way that I structure secrets, as you can see in the ci file.
 
-     `  
+       
           secrets: |
             DB_HOST=${{ secrets.SERVICE_NAME }}-dbhost:latest
             DB_USERNAME=${{ secrets.SERVICE_NAME }}-dbusername:latest
             DB_PASSWORD=${{ secrets.SERVICE_NAME }}-dbpassword:latest
-            SECRET_KEY_BASE=${{ secrets.SERVICE_NAME }}-secret-key:latest `
+            SECRET_KEY_BASE=${{ secrets.SERVICE_NAME }}-secret-key:latest 
 
 You should AT LEAST create those secrets in GCP with your data.
+
+## DEPLOYMENT
+
+I want to deploy my image updated once I create a new release, however you can change this in the release.yml file, where is all the config for the ci.
