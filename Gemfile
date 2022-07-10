@@ -48,9 +48,6 @@ gem 'rack-canonical-host'
 # Brotli compression for Rack responses (http://github.com/marcotc/rack-brotli/)
 gem 'rack-brotli'
 
-# Simple, efficient background processing for Ruby (https://sidekiq.org)
-gem 'sidekiq'
-
 # Lock staging servers from search engines and prying eyes. (http://lockup.interdiscipline.com)
 gem 'lockup'
 
