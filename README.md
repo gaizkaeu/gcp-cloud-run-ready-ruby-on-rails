@@ -63,6 +63,30 @@ As the account is created, it has no permissions, so we need to grant.
 
   *Replace username/repository* with your data.
   
-### Secrets
+## Secrets
 
 As rails applications different secrets are used, DB_HOST, SECRET_KEY_BASE... 
+
+### CI SECRETS
+
+Github Actions need to authenticate in GCP in order to access the API. For that, I am using github enviroments, in order not to mix secrets, etc... in my CI configuration I use the `deployment` environment.
+
+First of all we need to create that environment, in Settings -> Environments. Once its created we need to add our OICD identification parameters, WIF_PROVIDER and WIF_SERVICE_ACCOUNT
+
+* WIF_PROVIDER: Go to the GCP Cloud Console, Workload identity Federation, select your pool, "edit" and there you shoud see it.
+<img width="1170" alt="Captura de Pantalla 2022-07-10 a las 21 24 01" src="https://user-images.githubusercontent.com/24901613/178159191-deb2eeef-5b3c-4980-b9bc-54935772ccf2.png">
+<img width="1193" alt="Captura de Pantalla 2022-07-10 a las 21 24 29" src="https://user-images.githubusercontent.com/24901613/178159192-c8661c66-2ab6-43ec-a530-a4d9b7d4e04f.png">
+* WIF_SERVICE_ACCOUNT: The service account we just created.
+
+## SERVICE SECRETS
+
+In other to make the rails app work, we need some secrets, as the DB_HOST or the SECRET_KEY_BASE. The way that I structure secrets, as you can see in the ci file.
+
+     `  
+          secrets: |
+            DB_HOST=${{ secrets.SERVICE_NAME }}-dbhost:latest
+            DB_USERNAME=${{ secrets.SERVICE_NAME }}-dbusername:latest
+            DB_PASSWORD=${{ secrets.SERVICE_NAME }}-dbpassword:latest
+            SECRET_KEY_BASE=${{ secrets.SERVICE_NAME }}-secret-key:latest `
+
+You should AT LEAST create those secrets in GCP with your data.
