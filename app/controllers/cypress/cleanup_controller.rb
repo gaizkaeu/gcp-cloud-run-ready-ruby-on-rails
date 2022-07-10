@@ -1,7 +1,5 @@
 module Cypress
   class CleanupController < ActionController::Base
-    skip_before_action :verify_authenticity_token
-
     def destroy
       return unless Rails.configuration.x.cypress
 
