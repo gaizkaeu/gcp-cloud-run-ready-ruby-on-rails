@@ -302,7 +302,7 @@ GEM
     spring (4.1.0)
     spring-commands-rspec (1.0.4)
       spring (>= 0.9.1)
-    stimulus-rails (1.1.0)
+    stimulus-rails (1.1.1)
       railties (>= 6.0.0)
     syntax_tree (3.6.3)
       prettier_print
