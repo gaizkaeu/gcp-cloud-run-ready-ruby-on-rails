@@ -247,7 +247,7 @@ GEM
     rbs (2.8.4)
     redcarpet (3.6.0)
     redis (4.8.0)
-    regexp_parser (2.6.2)
+    regexp_parser (2.7.0)
     reline (0.3.2)
       io-console (~> 0.5)
     request_store (1.5.1)
