@@ -2081,6 +2081,13 @@ rollup@^2.79.1:
   optionalDependencies:
     fsevents "~2.3.2"
 
+rollup@^3.28.0:
+  version "3.28.0"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-3.28.0.tgz#a3c70004b01934760c0cb8df717c7a1d932389a2"
+  integrity sha512-d7zhvo1OUY2SXSM6pfNjgD5+d0Nz87CUp4mt8l/GgVP3oBsPwzNvSzyu1me6BSG9JIgWNTVcafIXBIyM8yQ3yw==
+  optionalDependencies:
+    fsevents "~2.3.2"
+
 run-parallel@^1.1.9:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/run-parallel/-/run-parallel-1.2.0.tgz#66d1368da7bdf921eb9d95bd1a9229e7f21a43ee"
