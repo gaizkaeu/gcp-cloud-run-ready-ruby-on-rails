@@ -163,7 +163,7 @@ jobs:
 
       - name: Deploy to Cloud Run
         id: deploy
-        uses: google-github-actions/deploy-cloudrun@v0
+        uses: google-github-actions/deploy-cloudrun@v2
         with:
           project_id: ${{ secrets.PROJECT_ID }}
           service: ${{ secrets.SERVICE_NAME }}
